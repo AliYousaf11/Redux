@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useSelector , useDispatch } from "react-redux";
+import { Incre, Decre, Squ } from "./Mkdir/Actions/index"
 function App() {
+  const mystate = useSelector((state) => state.calculator);
+  const dispatch = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='Counter'>
+        <button onClick={()=> dispatch(Incre())}>+</button>
+        <input name="quantity" type="text" value={mystate}/>
+        <button onClick={()=> dispatch(Decre())}>-</button>
+        <button onClick={()=> dispatch(Squ())}>*</button>
+      </div>
     </div>
   );
 }
